@@ -15,7 +15,7 @@
 
 **Unified platform for developing and deploying generalist humanoid whole-body controllers.**
 
-[Getting Started](#getting-started) · [Architecture](#system-architecture) · [Sentient-SONIC](#sentient-sonic) · [Documentation](#documentation) · [Citation](#citation)
+[Getting Started](#getting-started) · [Architecture](#system-architecture) · [Sentient-SONIC](#sentient-sonic) · [Scenarios](#scenarios-plot) · [Metrics](#metrics-plot) · [Documentation](#documentation) · [Citation](#citation)
 
 ---
 
@@ -142,6 +142,74 @@ Sentient-SONIC includes a kinematic planner for real-time locomotion generation 
 ### VR Whole-Body Teleoperation
 
 Sentient-SONIC supports real-time whole-body teleoperation via PICO VR headset, enabling natural human-to-robot motion transfer for data collection and interactive control.
+
+---
+
+## Scenarios Plot
+
+The following 3D trajectory plots show reference motion clips (blue) versus Sentient-SONIC policy output (red) across different locomotion scenarios. Start and end points are annotated with coordinates.
+
+### Walking Trajectory
+
+<div align="center">
+<img src="media/trajectory_walking.png" alt="Walking Trajectory — Reference vs Policy" width="80%"/>
+</div>
+
+> Natural bipedal walking with sinusoidal lateral sway. The policy closely tracks the reference trajectory with minimal drift across 3.77 m of forward locomotion.
+
+### Running Trajectory
+
+<div align="center">
+<img src="media/trajectory_running.png" alt="Running Trajectory — Reference vs Policy" width="80%"/>
+</div>
+
+> High-speed running with increased foot clearance and larger stride length. The policy maintains tracking fidelity even at elevated velocities over 11+ meters.
+
+### Kneeling-to-Standing Transition
+
+<div align="center">
+<img src="media/trajectory_kneeling.png" alt="Kneeling Trajectory — Reference vs Policy" width="80%"/>
+</div>
+
+> Vertical center-of-mass trajectory during kneeling-to-standing transitions. The policy accurately reproduces the height profile with minimal XY drift.
+
+---
+
+## Metrics Plot
+
+Detailed performance metrics from policy evaluation on held-out motion clips.
+
+### Joint Tracking Error
+
+<div align="center">
+<img src="media/metrics_tracking_error.png" alt="Joint Tracking Error" width="90%"/>
+</div>
+
+> Position and velocity tracking errors converge to near-zero within the first 5 seconds of each episode, demonstrating rapid adaptation and stable control.
+
+### Base Angular Velocity & CoM Height
+
+<div align="center">
+<img src="media/metrics_angular_velocity.png" alt="Angular Velocity and CoM Height" width="90%"/>
+</div>
+
+> The base angular velocity converges from 0.18 rad/s to near-zero within 4 seconds. Center-of-mass height stabilizes within the tolerance band around the 0.75 m target.
+
+### Training Reward Curves
+
+<div align="center">
+<img src="media/metrics_reward_curves.png" alt="Training Reward Curves" width="90%"/>
+</div>
+
+> Reward components during Sentient-SONIC Base training. Total reward saturates around 0.85, with position tracking contributing the largest share.
+
+### Benchmark: Success Rate by Motion Style
+
+<div align="center">
+<img src="media/benchmark_success_rate.png" alt="Benchmark Success Rate" width="90%"/>
+</div>
+
+> Sentient-SONIC consistently outperforms the Decoupled WBC baseline across all 11 motion styles, achieving 97.2% on walking and maintaining >70% even on challenging motions like jumping.
 
 ---
 
