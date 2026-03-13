@@ -1,0 +1,14 @@
+Sentient Robotics
+Copyright (c) 2026 Sentient Robotics
+
+This project is a modified version of GR00T-WholeBodyControl,
+originally developed by NVIDIA Corporation (NVlabs).
+
+Original Project: https://github.com/NVlabs/GR00T-WholeBodyControl
+Original License: Apache License 2.0
+
+This product includes software developed by NVIDIA Corporation.
+The original work is licensed under the Apache License, Version 2.0.
+
+Modifications and additions are Copyright (c) 2026 Sentient Robotics
+and are also licensed under the Apache License, Version 2.0.

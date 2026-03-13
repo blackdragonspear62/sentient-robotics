@@ -1,0 +1,28 @@
+# Sentient-SONIC Deployment Configuration — Unitree G1
+# Real hardware deployment settings
+
+deployment:
+  robot_type: unitree_g1
+  ip_address: 192.168.1.100
+  port: 8080
+
+inference:
+  use_onnx: true
+  onnx_model_path: checkpoints/sentient-sonic-base/policy.onnx
+  device: cpu
+  control_freq: 50.0
+
+safety:
+  enable_safety_controller: true
+  safety_margin: 0.9
+  max_joint_velocity: 8.0
+  max_joint_torque: 80.0
+  max_base_velocity: 1.5
+  emergency_stop_threshold: 2.0
+
+communication:
+  protocol: zmq
+  state_port: 5555
+  command_port: 5556
+  heartbeat_interval: 0.1
+  timeout: 1.0

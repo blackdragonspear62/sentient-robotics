@@ -1,0 +1,45 @@
+# Sentient-SONIC Large Training Configuration
+# Scaled-up version with larger network and more data
+
+experiment:
+  name: sentient_sonic_large
+  seed: 42
+  output_dir: outputs/sonic_large
+
+environment:
+  env_name: humanoid_motion_tracking
+  num_envs: 8192
+  robot: unitree_g1
+  sim_dt: 0.005
+  control_dt: 0.02
+  motion_dataset: data/motion_clips_large/
+
+policy:
+  obs_dim: 69
+  action_dim: 23
+  hidden_dims: [1024, 512, 256]
+  history_length: 15
+  latent_dim: 512
+  activation: elu
+
+training:
+  total_timesteps: 500_000_000
+  learning_rate: 1.0e-4
+  lr_schedule: cosine
+  gamma: 0.99
+  gae_lambda: 0.95
+  num_steps: 32
+  num_minibatches: 8
+  update_epochs: 8
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  max_grad_norm: 1.0
+
+reward:
+  w_pos: 1.5
+  w_vel: 0.2
+  w_root_pos: 0.8
+  w_root_rot: 0.5
+  w_energy: -0.0005
+  w_smoothness: -0.005

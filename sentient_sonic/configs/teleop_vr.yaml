@@ -1,0 +1,32 @@
+# Sentient-SONIC VR Teleoperation Configuration
+# PICO VR whole-body teleoperation settings
+
+teleoperation:
+  vr_device: pico
+  tracking_mode: full_body
+  retargeting_method: optimization
+
+communication:
+  zmq_host: localhost
+  zmq_port: 5555
+  control_freq: 50.0
+
+retargeting:
+  source_skeleton: smpl
+  target_robot: unitree_g1
+  use_ik: true
+  ik_iterations: 100
+  ik_tolerance: 1.0e-4
+  scale_factor: 1.0
+
+visualization:
+  enable_preview: true
+  preview_fps: 30
+  show_skeleton: true
+  show_targets: true
+
+recording:
+  enable_recording: false
+  output_dir: data/teleop_recordings/
+  save_format: npz
+  save_freq: 1

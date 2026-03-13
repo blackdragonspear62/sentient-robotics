@@ -1,0 +1,53 @@
+# Sentient-SONIC Base Training Configuration
+# Motion tracking with PPO on Unitree G1
+
+experiment:
+  name: sentient_sonic_base
+  seed: 42
+  output_dir: outputs/sonic_base
+
+environment:
+  env_name: humanoid_motion_tracking
+  num_envs: 4096
+  robot: unitree_g1
+  sim_dt: 0.005
+  control_dt: 0.02
+  motion_dataset: data/motion_clips/
+
+policy:
+  obs_dim: 69
+  action_dim: 23
+  hidden_dims: [512, 256, 128]
+  history_length: 10
+  latent_dim: 256
+  activation: elu
+
+training:
+  total_timesteps: 100_000_000
+  learning_rate: 3.0e-4
+  lr_schedule: adaptive
+  gamma: 0.99
+  gae_lambda: 0.95
+  num_steps: 24
+  num_minibatches: 4
+  update_epochs: 5
+  clip_coef: 0.2
+  ent_coef: 0.0
+  vf_coef: 0.5
+  max_grad_norm: 1.0
+  normalize_obs: true
+  normalize_reward: true
+
+reward:
+  w_pos: 1.0
+  w_vel: 0.1
+  w_root_pos: 0.5
+  w_root_rot: 0.3
+  w_energy: -0.001
+  w_smoothness: -0.01
+
+checkpoint:
+  save_freq: 500
+  eval_freq: 100
+  log_freq: 10
+  keep_last: 5

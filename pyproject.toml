@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=68.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentient-robotics"
+version = "0.1.0"
+description = "Sentient Robotics — A unified platform for developing and deploying advanced humanoid whole-body controllers."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Sentient Robotics Team"},
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Robotics",
+]
+dependencies = [
+    "numpy>=1.21.0",
+    "torch>=2.0.0",
+    "scipy>=1.7.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.60.0",
+    "tensorboard>=2.10.0",
+    "onnxruntime>=1.14.0",
+    "transforms3d>=0.4.1",
+    "hydra-core>=1.3.0",
+    "omegaconf>=2.3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+    "black>=23.0",
+    "isort>=5.12",
+    "mypy>=1.0",
+]
+deploy = [
+    "zmq>=0.0.0",
+    "pybullet>=3.2.5",
+]
+teleop = [
+    "opencv-python>=4.7.0",
+    "mediapipe>=0.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/SentientRobotics/sentient-robotics"
+Repository = "https://github.com/SentientRobotics/sentient-robotics"
+Documentation = "https://SentientRobotics.github.io/sentient-robotics"
+Issues = "https://github.com/SentientRobotics/sentient-robotics/issues"
+
+[project.scripts]
+sentient-deploy = "sentient_sonic_deploy.cli:main"
+sentient-teleop = "sentient_sonic.teleop.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["sentient_sonic*", "decoupled_wbc*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true

@@ -1,0 +1,41 @@
+graph TB
+    subgraph "Training Pipeline"
+        MD[("Motion Data<br/>(AMASS / CMU / Custom)")] --> PP["Data Preprocessor<br/><i>sentient_sonic.data</i>"]
+        PP --> RT["Motion Retargeter<br/><i>sentient_sonic.utils</i>"]
+        RT --> ENV["Isaac Gym / Isaac Lab<br/>4096+ Parallel Envs"]
+        ENV --> PPO["PPO Trainer<br/><i>sentient_sonic.core</i>"]
+        PPO --> CKP[("Trained Checkpoint<br/>.pt / .onnx")]
+    end
+
+    subgraph "Sentient-SONIC Policy"
+        OBS["Observation Vector<br/>Joint States + IMU + Gravity"] --> TE["Temporal Encoder<br/>1D Conv (history=10)"]
+        TE --> LAT["Latent Space<br/>256-dim"]
+        LAT --> ACT["Actor Head<br/>MLP 512-256-128"]
+        LAT --> CRT["Critic Head<br/>MLP 512-256-128"]
+        ACT --> JT["Joint Targets<br/>(23 DOF)"]
+    end
+
+    subgraph "Deployment Runtime C++"
+        CKP --> ONNX["ONNX Inference Engine<br/><i>sentient_sonic_deploy</i>"]
+        ONNX --> SAFE["Safety Controller<br/>Multi-level Protection"]
+        SAFE --> CMD["Robot Command<br/>Position + Velocity + Gains"]
+        CMD --> HW["Robot Hardware<br/>Unitree G1 / Fourier GR1"]
+        HW --> SE["State Estimator<br/>EKF IMU + Contact"]
+        SE --> OBS
+    end
+
+    subgraph "Teleoperation"
+        VR["PICO VR Headset"] -->|ZMQ 72Hz| ZB["ZMQ Bridge"]
+        KB["Keyboard / Gamepad"] --> ZB
+        ZB --> KP["Kinematic Planner"]
+        KP --> OBS
+    end
+
+    style MD fill:#1a1a2e,stroke:#e94560,color:#fff
+    style CKP fill:#1a1a2e,stroke:#e94560,color:#fff
+    style HW fill:#0f3460,stroke:#e94560,color:#fff
+    style VR fill:#16213e,stroke:#0f3460,color:#fff
+    style ONNX fill:#533483,stroke:#e94560,color:#fff
+    style SAFE fill:#e94560,stroke:#fff,color:#fff
+    style PPO fill:#533483,stroke:#e94560,color:#fff
+    style ENV fill:#0f3460,stroke:#533483,color:#fff
