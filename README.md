@@ -1,3 +1,5 @@
+https://x.com/SentientRobot12
+
 <div align="center">
 
 <img src="media/sentient_robotics_banner.png" alt="Sentient Robotics Banner" width="100%"/>
