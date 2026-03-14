@@ -2,7 +2,7 @@ https://x.com/SentientRobot12
 
 <div align="center">
 
-<img src="media/sentient_robotics_banner.png" alt="Sentient Robotics Banner" width="100%"/>
+<img src="media/banner.jpeg" alt="Sentient Robotics Banner" width="100%"/>
 
 # SENTIENT ROBOTICS
 
