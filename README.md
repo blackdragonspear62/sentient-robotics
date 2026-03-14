@@ -4,6 +4,7 @@
 
 # SENTIENT ROBOTICS
 
+
 ### Advanced Humanoid Whole-Body Control Platform
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -11,7 +12,7 @@
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C.svg?logo=cplusplus&logoColor=white)](https://isocpp.org)
 [![ONNX](https://img.shields.io/badge/ONNX-Runtime-005CED.svg?logo=onnx&logoColor=white)](https://onnxruntime.ai)
 [![arXiv](https://img.shields.io/badge/arXiv-2511.07820-b31b1b.svg)](https://arxiv.org/abs/2511.07820)
-[![Docs](https://img.shields.io/badge/Docs-GitHub%20Pages-222222.svg?logo=github)](https://SentientRobotics.github.io/sentient-robotics)
+[![Docs](https://img.shields.io/badge/Docs-GitHub%20Pages-222222.svg?logo=github)](https://blackdragonspear62.github.io/sentient-robotics)
 
 **Unified platform for developing and deploying generalist humanoid whole-body controllers.**
 
@@ -24,6 +25,16 @@
 ## Overview
 
 **Sentient Robotics** is a unified platform for developing and deploying advanced humanoid whole-body controllers. It hosts model checkpoints and scripts for training, evaluating, and deploying controllers that enable humanoid robots to perform natural, whole-body movements — from walking and crawling to teleoperation and multi-modal control.
+
+<div align="center">
+  <table border="0">
+    <tr>
+      <td width="33%"><img src="docs/vid1.gif" alt="Sentient Robotics Demo 1" width="100%"/></td>
+      <td width="33%"><img src="docs/vid2.gif" alt="Sentient Robotics Demo 2" width="100%"/></td>
+      <td width="33%"><img src="docs/vid4.gif" alt="Sentient Robotics Demo 3" width="100%"/></td>
+    </tr>
+  </table>
+</div>
 
 This platform currently supports:
 
@@ -255,9 +266,10 @@ sentient-robotics/
 
 ### Installation
 
+
 ```bash
 # Clone with Git LFS
-git clone https://github.com/SentientRobotics/sentient-robotics.git
+git clone https://github.com/blackdragonspear62/sentient-robotics.git
 cd sentient-robotics
 git lfs pull
 
@@ -378,7 +390,7 @@ All required legal documents, including the Apache 2.0 license, 3rd-party attrib
 
 ## Support
 
-For questions and issues, please [open an issue](https://github.com/SentientRobotics/sentient-robotics/issues) or contact the Sentient Robotics team.
+For questions and issues, please [open an issue](https://github.com/blackdragonspear62/sentient-robotics/issues) or contact the Sentient Robotics team.
 
 ---
 
@@ -388,7 +400,7 @@ This project is built upon the foundational work of [GR00T-WholeBodyControl](htt
 
 We would also like to acknowledge the following projects from which parts of the code are derived:
 
-- [Beyond Mimic](https://github.com/ZhengyiLuo/PHC)
+- [Beyond Mimic](https://github.com/blackdragonspear62/PHC)
 - [Isaac Lab](https://github.com/isaac-sim/IsaacLab)
 
 <div align="center">
